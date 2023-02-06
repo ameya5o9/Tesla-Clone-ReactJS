@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 // import ground from '/images/model-s.png'
+import Fade from 'react-reveal/Fade';
 
 const Section = ({title, description, backgroundImg}) => {
   return (
@@ -9,8 +10,10 @@ const Section = ({title, description, backgroundImg}) => {
 
       </Blank1>
       <Container>
+        <Fade bottom>
         <h1>{title}</h1>
         <p>{description}</p>
+        </Fade>
       </Container>
 
       <Blank2>
@@ -18,8 +21,9 @@ const Section = ({title, description, backgroundImg}) => {
 
       </Blank2>
       <Buttons>
+        <Fade bottom>
         <Left>ORDER</Left>
-        <Right>INVENTORY</Right>
+        <Right>INVENTORY</Right></Fade>
 
       </Buttons>
 
@@ -63,7 +67,6 @@ display: grid;
 align-items: center;
 justify-content: center;
 text-align: center;
-
 `
 
 const Buttons = styled.div`

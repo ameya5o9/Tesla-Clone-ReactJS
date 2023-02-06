@@ -1,47 +1,54 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import tesla from './logo.svg'
 import ham from './hamburger.png'
 import cross from './cross.png'
+import Fade from 'react-reveal/Fade'
 
 const Header = () => {
 
-    const [burgerStatus, setBurgerStatus] = useState(false);  // false - menu is closed
+    const [burgerStatus, setBurgerStatus] = useState(true);  // false - menu is closed
   return (
     <Navbar>
+        <Fade>
         <a>
             <img src={tesla}  />
         </a>
+        </Fade>
         <Menu>
+            <Fade>
 
             <ul>
                 <li>MODEL S</li>
                 <li>MODEL 3</li>
                 <li>MODEL X</li>
                 <li>MODEL Y</li>
-            </ul>
+            </ul></Fade>
         </Menu>
         <Rightmenu >
+            <Fade>
             <a href="">SHOP</a>
             <a href="">ACCOUNT</a>
-            <a href="" ><img src={ham} alt="" /></a>
+            <a href="" ><img src={ham} onClick={()=> setBurgerStatus(false)} alt="" /></a></Fade>
         </Rightmenu>
 
-        <Hamburger onClick={()=> setBurgerStatus(true)}>
-            <Cross>
-             <img src={cross} alt="" />
+        <Hamburger show={burgerStatus}>
+            <Cross >
+             <img src={cross} onClick={()=> setBurgerStatus(false)} alt="" />
 
             </Cross>
             <ul>
+                <Fade right>
                 <li>Monster Truck</li>
                 <li>SpaceX</li>
                 <li>Airless Tires</li>
                 <li>Neuralink</li>
-                <li>Contact Us</li>
+                <li>Contact Us</li></Fade>
             </ul>
 
 
         </Hamburger>
+        
 
     </Navbar>
 
@@ -55,6 +62,7 @@ position: fixed;
 display: flex;
 width: 100%;
 padding-left: 10px;
+padding-top: 10px;
 align-items: center;
 justify-content: center;
 img{
@@ -113,9 +121,7 @@ top: 0;
 right: 0;
 bottom: 0;
 transform: ${props => props.show? 'translateX(0)' : 'translateX(100%)'};  //if true props.show? =   if false : ...
-
-/* z-index: 100; */
-
+transition: transform 0.2s ease-in;
 ul{
     display: flex;
     flex-direction: column;
@@ -141,6 +147,6 @@ const Cross =  styled.div`
     height: 30px;
     justify-content: flex-end;
 img{
-
+    cursor: pointer;
 }
 `

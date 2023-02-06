@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Section from './components/Section';
 import Home from './components/Home';
 
-
 function App() {
   return (
       <div>
